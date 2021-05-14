@@ -1,0 +1,9 @@
+<tui-theme-night *ngIf="isDark | async"></tui-theme-night>
+
+<tui-root 
+        class="container" 
+        [ngClass]="{ 'dark-mode': isDark | async }">
+
+	<tui-toggle [formControl]="toggle"></tui-toggle>
+    <router-outlet></router-outlet>
+</tui-root>

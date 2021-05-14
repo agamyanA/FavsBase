@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "favsbase": {
+      "hosting": {
+        "FavsBase": [
+          "favsbase"
+        ]
+      }
+    }
+  }
+}

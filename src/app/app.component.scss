@@ -1,0 +1,14 @@
+$bg-dark: linear-gradient(to bottom, hsl(221, 51%, 5%), hsl(221, 51%, 16%));
+$bg-ligth: linear-gradient(to bottom, hsl(203, 40%, 44%), hsl(203, 40%, 76%));
+
+.container {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    place-content: center;
+    background: $bg-ligth;
+}
+
+.dark-mode {
+    background: $bg-dark;
+}
