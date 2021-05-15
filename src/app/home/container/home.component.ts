@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
+  selector: 'home',
   templateUrl: 'home.component.html',
-  styleUrls: ['home.component.scss']
+  styles: ['.container { margin: 0 1rem }']
 })
 export class HomeComponent {}
