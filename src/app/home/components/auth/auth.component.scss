@@ -8,11 +8,22 @@
 
     &__pw {
         width: 100%;
-        padding: 2rem 0;
+        padding-top: 2rem;
     }
 
     &__text {
         display: block;
         padding: 2rem 0;
+        font-size: clamp(0.8rem, 0.8vw, 1.5rem)
+    }
+    
+    button {
+        margin-top: 2rem;
+    }
+
+    a {
+        cursor: pointer;
+        text-decoration: underline;
+        color: hsl(227, 59%, 57%);
     }
 }

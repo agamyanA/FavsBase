@@ -1,7 +1,45 @@
-<form class="form-container">
-    <span class="form-container__text">some welcome text</span>
-    <tui-input class="form-container__email">Email</tui-input>
-    <tui-input-password class="form-container__pw">Password</tui-input-password>
-    <button tuiButton type="button">Sign in</button>
-    <span class="form-container__text">First time here? Sign up or join via guest mode</span>
+<form 
+        [formGroup]='authForm'
+        (ngSubmit)='onSubmit()'
+        class="form-container">
+
+    <span class="form-container__text">Welcome to FavsBase! <br> Simple way to categorize favourite links</span>
+
+    <tui-input
+        formControlName='email'
+        class="form-container__email">
+        Email
+    </tui-input>
+    <tui-error *ngIf='emailErrors.required' [error]="validationErrors.email.required"></tui-error>
+    <tui-error *ngIf='emailErrors.email' [error]="validationErrors.email.invalid"></tui-error>
+
+    <tui-input-password
+        formControlName='pw' 
+        class="form-container__pw">
+        Password
+    </tui-input-password>
+    <tui-error *ngIf='pwErrors.required' [error]="validationErrors.pw.required"></tui-error>
+    <tui-error *ngIf='pwErrors.length' [error]="validationErrors.pw.length"></tui-error>
+
+    <button 
+        *ngIf='isSignedup'
+        tuiButton
+        type="submit"
+        [disabled]='!authForm.valid'>
+        Sign in
+    </button>
+    <button 
+        *ngIf='!isSignedup'
+        tuiButton
+        type="submit"
+        [disabled]='!authForm.valid'>
+        Sign up
+    </button>
+
+    <span 
+        *ngIf='isSignedup'
+        class="form-container__text">
+        First time here? <a (click)="changeToSingup()">Sign up</a> or join via <a>guest mode</a>
+    </span>
+
 </form>
