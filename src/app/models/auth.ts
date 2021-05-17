@@ -1,5 +1,5 @@
 export interface IAuth {
-    isSignedup: boolean,
+    isSignedUp: boolean,
     cred: {
         email: string,
         pw: string

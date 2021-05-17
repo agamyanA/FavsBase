@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IAuth } from 'src/app/models/auth';
-import { ValidationService } from '../services/validation.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'home',
@@ -9,13 +9,15 @@ import { ValidationService } from '../services/validation.service';
 
 export class HomeComponent {
 
+  constructor(private auth: AuthService) {}
+
   handle(authInfo: IAuth) {
-    this.validation = authInfo
-  }
 
-  validation: object = {}
+    if (authInfo.isSignedUp) {
+      this.auth.signIn(authInfo.cred.email, authInfo.cred.pw)
+    } else {
+      this.auth.signUp(authInfo.cred.email, authInfo.cred.pw)
+    }
 
-  constructor(private vs: ValidationService) {}
-
-  
+  }  
 }

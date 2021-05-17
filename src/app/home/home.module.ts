@@ -9,8 +9,6 @@ import { TuiInputModule, TuiInputPasswordModule, TuiIslandModule } from '@taiga-
 import { HomeComponent } from './container/home.component';
 import { AuthComponent } from './components/auth/auth.component';
 
-import { ValidationService } from './services/validation.service';
-
 @NgModule({
   declarations: [
     HomeComponent,
@@ -25,7 +23,6 @@ import { ValidationService } from './services/validation.service';
     TuiInputPasswordModule,
     TuiButtonModule,
     TuiErrorModule
-  ],
-  providers: [ValidationService]
+  ]
 })
 export class HomeModule { }

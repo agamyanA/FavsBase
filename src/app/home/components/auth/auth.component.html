@@ -22,14 +22,14 @@
     <tui-error *ngIf='pwErrors.length' [error]="validationErrors.pw.length"></tui-error>
 
     <button 
-        *ngIf='isSignedup'
+        *ngIf='isSignedUp'
         tuiButton
         type="submit"
         [disabled]='!authForm.valid'>
         Sign in
     </button>
     <button 
-        *ngIf='!isSignedup'
+        *ngIf='!isSignedUp'
         tuiButton
         type="submit"
         [disabled]='!authForm.valid'>
@@ -37,9 +37,9 @@
     </button>
 
     <span 
-        *ngIf='isSignedup'
+        *ngIf='isSignedUp'
         class="form-container__text">
-        First time here? <a (click)="changeToSingup()">Sign up</a> or join via <a>guest mode</a>
+        First time here? <a (click)="changeToSingUp()">Sign up</a> or join via <a>guest mode</a>
     </span>
 
 </form>

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { TuiValidationError } from '@taiga-ui/cdk';
 
@@ -11,9 +11,10 @@ import { TuiValidationError } from '@taiga-ui/cdk';
 export class AuthComponent {
 
   @Output() auth: EventEmitter<any> = new EventEmitter()
-  @Input() validation: object = {}
 
-  isSignedup: boolean = true
+  isSignedUp: boolean = true
+
+  emailPattern: RegExp = /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/
 
   validationErrors = {
     email: {
@@ -27,25 +28,25 @@ export class AuthComponent {
   }
 
   authForm: FormGroup = new FormGroup({
-    email: new FormControl(null, [Validators.required, Validators.email]),
+    email: new FormControl(null, [Validators.required, Validators.pattern(this.emailPattern)]),
     pw: new FormControl(null, [Validators.required, Validators.minLength(6)]),
   })
 
-  changeToSingup() {
-    this.isSignedup = !this.isSignedup
+  changeToSingUp() {
+    this.isSignedUp = !this.isSignedUp
   }
 
   onSubmit() {
     this.auth.emit({
-      isSignedup: this.isSignedup,
-      cred: this.authForm
+      isSignedup: this.isSignedUp,
+      cred: this.authForm.value
     })
   }
 
   get emailErrors() {
     return {
       required: this.authForm.get('email')?.errors?.required && this.authForm.get('email')?.touched,
-      email: this.authForm.get('email')?.errors?.email && this.authForm.get('email')?.touched,
+      email: this.authForm.get('email')?.errors?.pattern && this.authForm.get('email')?.touched,
     }
   }
 
