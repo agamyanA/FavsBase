@@ -10,16 +10,16 @@
         class="form-container__email">
         Email
     </tui-input>
-    <tui-error *ngIf='emailErrors.required' [error]="validationErrors.email.required"></tui-error>
-    <tui-error *ngIf='emailErrors.email' [error]="validationErrors.email.invalid"></tui-error>
+    <tui-error *ngIf='emailErrors.required' [error]="validationErrorMessages.email.required"></tui-error>
+    <tui-error *ngIf='emailErrors.email' [error]="validationErrorMessages.email.invalid"></tui-error>
 
     <tui-input-password
         formControlName='pw' 
         class="form-container__pw">
         Password
     </tui-input-password>
-    <tui-error *ngIf='pwErrors.required' [error]="validationErrors.pw.required"></tui-error>
-    <tui-error *ngIf='pwErrors.length' [error]="validationErrors.pw.length"></tui-error>
+    <tui-error *ngIf='pwErrors.required' [error]="validationErrorMessages.pw.required"></tui-error>
+    <tui-error *ngIf='pwErrors.length' [error]="validationErrorMessages.pw.length"></tui-error>
 
     <button 
         *ngIf='isSignedUp'

@@ -1,3 +1,9 @@
 <tui-island>
-    <auth (auth)='handle($event)'></auth>
+    <auth   
+            (auth)='authHandler($event)'
+            [authForm]='authForm'
+            [validationErrorMessages]='validationErrorMessages'
+            [emailErrors]='emailErrors'
+            [pwErrors]='pwErrors'>
+    </auth>
 </tui-island>
