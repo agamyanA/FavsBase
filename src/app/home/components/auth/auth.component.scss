@@ -12,9 +12,7 @@
     }
 
     &__text {
-        display: block;
-        padding: 2rem 0;
-        font-size: clamp(0.8rem, 0.8vw, 1.5rem)
+        font-size: clamp(0.7rem, 0.8vw, 1.5rem)
     }
     
     button {
@@ -26,4 +24,21 @@
         text-decoration: underline;
         color: hsl(227, 59%, 57%);
     }
+}
+
+.text-mod {
+    display: block;
+    padding: 2rem 0;
+}
+
+.mt {
+    margin-top: 1rem;
+}
+
+.pointer {
+    cursor: pointer;
+}
+
+.center {
+    text-align: center;
 }

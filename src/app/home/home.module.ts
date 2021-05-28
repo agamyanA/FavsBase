@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 
-import { TuiButtonModule, TuiErrorModule } from '@taiga-ui/core';
+import { TuiButtonModule, TuiErrorModule, TuiNotificationModule, TuiSvgModule } from '@taiga-ui/core';
 import { TuiInputModule, TuiInputPasswordModule, TuiIslandModule } from '@taiga-ui/kit';
 
 import { HomeComponent } from './container/home.component';
@@ -22,7 +22,9 @@ import { AuthComponent } from './components/auth/auth.component';
     TuiInputModule,
     TuiInputPasswordModule,
     TuiButtonModule,
-    TuiErrorModule
+    TuiErrorModule,
+    TuiNotificationModule,
+    TuiSvgModule
   ]
 })
 export class HomeModule { }

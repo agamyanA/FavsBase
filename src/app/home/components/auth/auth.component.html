@@ -1,45 +1,63 @@
-<form 
-        [formGroup]='authForm'
-        (ngSubmit)='onSubmit()'
-        class="form-container">
+<section class="center">
 
-    <span class="form-container__text">Welcome to FavsBase! <br> Simple way to categorize favourite links</span>
-
-    <tui-input
-        formControlName='email'
-        class="form-container__email">
-        Email
-    </tui-input>
-    <tui-error *ngIf='emailErrors.required' [error]="validationErrorMessages.email.required"></tui-error>
-    <tui-error *ngIf='emailErrors.email' [error]="validationErrorMessages.email.invalid"></tui-error>
-
-    <tui-input-password
-        formControlName='pw' 
-        class="form-container__pw">
-        Password
-    </tui-input-password>
-    <tui-error *ngIf='pwErrors.required' [error]="validationErrorMessages.pw.required"></tui-error>
-    <tui-error *ngIf='pwErrors.length' [error]="validationErrorMessages.pw.length"></tui-error>
-
-    <button 
-        *ngIf='isSignedUp'
-        tuiButton
-        type="submit"
-        [disabled]='!authForm.valid'>
-        Sign in
-    </button>
-    <button 
+    <tui-svg
         *ngIf='!isSignedUp'
-        tuiButton
-        type="submit"
-        [disabled]='!authForm.valid'>
-        Sign up
-    </button>
+        class="pointer"
+        src='tuiIconArrowLeftLarge'
+        (click)='changeToSingUp()'>
+    </tui-svg>
 
-    <span 
-        *ngIf='isSignedUp'
-        class="form-container__text">
-        First time here? <a (click)="changeToSingUp()">Sign up</a> or join via <a>guest mode</a>
-    </span>
+    <form 
+            [formGroup]='authForm'
+            (ngSubmit)='onSubmit()'
+            class="form-container">
 
-</form>
+        <span class="form-container__text text-mod">Welcome to FavsBase! <br> Simple way to categorize favourite links</span>
+
+        <tui-input
+            formControlName='email'
+            class="form-container__email">
+            Email
+        </tui-input>
+        <tui-error *ngIf='emailErrors.required' [error]="validationErrorMessages.email.required"></tui-error>
+        <tui-error *ngIf='emailErrors.email' [error]="validationErrorMessages.email.invalid"></tui-error>
+
+        <tui-input-password
+            formControlName='pw' 
+            class="form-container__pw">
+            Password
+        </tui-input-password>
+        <tui-error *ngIf='pwErrors.required' [error]="validationErrorMessages.pw.required"></tui-error>
+        <tui-error *ngIf='pwErrors.length' [error]="validationErrorMessages.pw.length"></tui-error>
+
+        <button 
+            *ngIf='isSignedUp'
+            tuiButton
+            type="submit"
+            [disabled]='!authForm.valid'>
+            Sign in
+        </button>
+        <button 
+            *ngIf='!isSignedUp'
+            tuiButton
+            type="submit"
+            [disabled]='!authForm.valid'>
+            Sign up
+        </button>
+
+        <span 
+            *ngIf='isSignedUp'
+            class="form-container__text text-mod">
+            First time here? <a (click)="changeToSingUp()">Sign up</a> or use <a (click)="onDemo()">Demo mode</a>
+        </span>
+
+    </form>
+
+    <tui-notification 
+        *ngIf='authError | async'
+        class="form-container__text mt center"
+        [status]="$any('error')">
+        {{ notificationText }}
+    </tui-notification>
+
+</section>
