@@ -1,0 +1,9 @@
+.dashboard {
+    display: grid;
+    place-items: center;
+    gap: 1.5rem;
+
+    &__search {
+        width: 100%;
+    }
+}
