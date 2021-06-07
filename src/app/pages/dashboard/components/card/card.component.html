@@ -1,0 +1,45 @@
+<a 
+    [href]='url'
+    id="link">
+    <tui-island
+        class="card"
+        (mouseenter)='showMenuToggle()'
+        (mouseleave)='showMenuToggle()'>
+        <span
+            class="card__title">
+            {{ title }}
+        </span>
+        <tui-avatar
+            size='s'
+            [text]='title'
+            [rounded]=true
+            [avatarUrl]='avatarUrl'>
+        </tui-avatar>
+        <div class="card__toggle-container">
+            <tui-svg
+                *ngIf='menuToggle' 
+                class="card__toggle"
+                src='tuiIconChevronDown'
+                (click)='openMenuToggle($event)'>
+            </tui-svg>
+        </div>
+    </tui-island>
+</a>
+
+<div
+    *ngIf='menuOpen'
+    class="card__dropdown"
+    (mouseleave)='openMenuToggle($event)'
+    (touchmove)='openMenuToggle($event)'>
+    <span 
+        class="card__dropdown-item"
+        (click)='editCard()'>
+        Edit
+    </span>
+    <hr>
+    <span 
+        class="card__dropdown-item"
+        (click)='removeCard()'>
+        Remove
+    </span>
+</div>

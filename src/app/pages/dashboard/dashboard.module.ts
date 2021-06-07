@@ -7,8 +7,8 @@ import { SearchComponent } from './components/search/search.component';
 import { BoardComponent } from './components/board/board.component';
 import { CardComponent } from './components/card/card.component';
 
-import { TuiActionModule, TuiInputModule, TuiIslandModule } from '@taiga-ui/kit';
-import { TuiButtonModule, TuiDataListModule } from '@taiga-ui/core';
+import { TuiAvatarModule, TuiInputModule, TuiIslandModule } from '@taiga-ui/kit';
+import { TuiButtonModule, TuiSvgModule } from '@taiga-ui/core';
 
 @NgModule({
   declarations: [
@@ -23,8 +23,8 @@ import { TuiButtonModule, TuiDataListModule } from '@taiga-ui/core';
     TuiInputModule,
     TuiIslandModule,
     TuiButtonModule,
-    TuiActionModule,
-    TuiDataListModule
+    TuiAvatarModule,
+    TuiSvgModule
   ]
 })
 export class DashboardModule { }

@@ -1,3 +1,8 @@
 <tui-island class="board">
-    <app-card></app-card>
+    <div *ngFor='let card of data'>
+        <app-card 
+            [card]='card'
+            (remove)='remove()'>
+        </app-card>
+    </div>
 </tui-island>
