@@ -1,0 +1,36 @@
+<tui-island
+    class="card"
+    (mouseenter)='showMenuToggle()'
+    (mouseleave)='showMenuToggle()'>
+    <span
+        class="card__title">
+        {{ '' }}
+    </span>
+    <tui-svg src='tuiIconFolderLarge'></tui-svg>
+    <div class="card__toggle-container">
+        <tui-svg
+            *ngIf='menuToggle' 
+            class="card__toggle"
+            src='tuiIconChevronDown'
+            (click)='openMenuToggle($event)'>
+        </tui-svg>
+    </div>
+</tui-island>
+
+<div
+    *ngIf='menuOpen'
+    class="card__dropdown"
+    (mouseleave)='openMenuToggle($event)'
+    (touchmove)='openMenuToggle($event)'>
+    <span 
+        class="card__dropdown-item"
+        (click)='editCard()'>
+        Edit
+    </span>
+    <hr>
+    <span 
+        class="card__dropdown-item"
+        (click)='removeCard()'>
+        Remove
+    </span>
+</div>

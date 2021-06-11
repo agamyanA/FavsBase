@@ -7,6 +7,7 @@ import { DashboardComponent } from './container/dashboard.component';
 import { SearchComponent } from './components/search/search.component';
 import { BoardComponent } from './components/board/board.component';
 import { BookmarkComponent } from './components/bookmark/bookmark.component';
+import { FolderComponent } from './components/folder/folder.component';
 import { ChooseItemDialogComponent } from './components/choose-item-dialog/choose-item-dialog.component';
 import { ItemDialogComponent } from './components/item-dialog/item-dialog.component';
 
@@ -20,7 +21,8 @@ import { TuiButtonModule, TuiDialogModule, TuiSvgModule, TuiTextfieldControllerM
     BoardComponent,
     BookmarkComponent,
     ChooseItemDialogComponent,
-    ItemDialogComponent
+    ItemDialogComponent,
+    FolderComponent
   ],
   imports: [
     CommonModule,
