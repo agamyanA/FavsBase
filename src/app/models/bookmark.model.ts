@@ -1,4 +1,4 @@
-export interface Card {
+export interface Bookmark {
     title: string
     url: string
 }

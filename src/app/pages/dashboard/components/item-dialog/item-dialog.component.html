@@ -1,0 +1,28 @@
+<main class="dialog-content">
+    <span class="dialog-content__header">{{ dialogType.type }}</span>
+    <form
+        [formGroup]='addItemForm'
+        (ngSubmit)='addItem()'
+        class="dialog-content__form">
+        <section 
+            formArrayName='formFields'
+            *ngFor='let control of formFields.controls; let i = index'
+            class="dialog-content__form-input">
+            <tui-input
+                [formControlName]='i'
+                tuiTextfieldSize='m'>
+                {{ formFieldLabels[i] }}
+            </tui-input>
+        </section>
+        <section class="dialog-content__form-button">
+            <button
+                tuiButton
+                appearance='whiteblock-active'
+                type="submit"
+                size='m'
+                [disabled]='!addItemForm.valid'>
+                Add
+            </button>
+        </section>
+    </form>
+</main>

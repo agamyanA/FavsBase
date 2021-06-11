@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
+import { PolymorpheusComponent } from '@tinkoff/ng-polymorpheus'
+import { TuiDialogService } from '@taiga-ui/core';
 import { AuthService } from 'src/app/services/auth.service';
+import { ChooseItemDialogComponent } from '../components/choose-item-dialog/choose-item-dialog.component';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -8,9 +12,17 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class DashboardComponent {
 
-  constructor(private auth: AuthService) {}
+  constructor(private dialogService: TuiDialogService,  private auth: AuthService) {}
 
   logOut() {
     this.auth.signOut()
+  }
+
+  openDialog() {
+    this.dialogService.open(
+      new PolymorpheusComponent(ChooseItemDialogComponent), {
+        size: 's'
+      }
+    ).subscribe()
   }
 }

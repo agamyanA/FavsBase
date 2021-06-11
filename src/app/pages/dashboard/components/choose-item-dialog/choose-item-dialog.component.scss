@@ -1,0 +1,15 @@
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    &__header {
+        margin: auto;
+    }
+
+    &__controls {
+        margin: auto;
+        display: flex;
+        gap: 2rem;
+    }
+}

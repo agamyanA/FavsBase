@@ -1,0 +1,28 @@
+.dialog-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+
+    &__header {
+        margin: auto;
+    }
+
+    &__form {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    &__form-input {
+        margin: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+        width: 20rem;
+    }
+
+    &__form-button {
+        margin: auto;
+    }
+}

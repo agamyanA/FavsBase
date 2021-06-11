@@ -36,7 +36,6 @@ export class AuthComponent {
   }
 
   get notificationText(): string {
-
     return this.isSignedUp ? 
             'Looks like your email or password is incorrect...' :
             'User with this email already exists'

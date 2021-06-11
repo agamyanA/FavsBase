@@ -48,7 +48,6 @@ export class HomeComponent implements OnDestroy {
   }
 
   authHandler(isSignedUp: boolean) {
-
     if (isSignedUp) {
       this.auth.handler(this.auth.signIn(this.email, this.pw), this.notifier)                                  
     } else {
