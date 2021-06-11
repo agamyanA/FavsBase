@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { AngularFirestoreDocument } from '@angular/fire/firestore'
 import { Bookmark } from 'src/app/models/bookmark.model';
 
 @Component({
@@ -12,7 +11,7 @@ export class BookmarkComponent {
 
   @Output() remove: EventEmitter<any> = new EventEmitter()
   @Output() edit: EventEmitter<any> = new EventEmitter()
-  @Input() card!: AngularFirestoreDocument<Bookmark>
+  @Input() card!: Bookmark
 
   menuToggle: boolean = false
   menuOpen: boolean = false

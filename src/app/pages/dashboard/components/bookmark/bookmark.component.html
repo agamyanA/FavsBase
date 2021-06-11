@@ -1,5 +1,5 @@
 <a 
-    [href]=''
+    [href]="'https://' + card.url"
     id="link">
     <tui-island
         class="card"
@@ -7,13 +7,13 @@
         (mouseleave)='showMenuToggle()'>
         <span
             class="card__title">
-            {{ '' }}
+            {{ card.title }}
         </span>
         <tui-avatar
             size='s'
-            text='av'
+            [text]='card.title'
             [rounded]=true
-            [avatarUrl]="avatarUrl + ('...') + '/32'">
+            [avatarUrl]="avatarUrl + card.url + '/32'">
         </tui-avatar>
         <div class="card__toggle-container">
             <tui-svg

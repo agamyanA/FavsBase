@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { AngularFirestoreDocument } from '@angular/fire/firestore';
 import { Folder } from 'src/app/models/folder.model';
 
 @Component({
@@ -12,7 +11,7 @@ export class FolderComponent {
   
   @Output() remove: EventEmitter<any> = new EventEmitter()
   @Output() edit: EventEmitter<any> = new EventEmitter()
-  @Input() card!: AngularFirestoreDocument<Folder>
+  @Input() card!: Folder
 
   menuToggle: boolean = false
   menuOpen: boolean = false
