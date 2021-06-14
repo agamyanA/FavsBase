@@ -15,6 +15,7 @@ import { TuiToggleModule } from '@taiga-ui/kit';
 import { AngularFireModule } from '@angular/fire';
 
 import { AppComponent } from './app.component';
+import { PageNotFoundComponent } from './pages/404/page-not-found.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,7 @@ import { AppComponent } from './app.component';
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
   ],
-  declarations: [AppComponent],
+  declarations: [AppComponent, PageNotFoundComponent],
   bootstrap: [AppComponent]
 })
 

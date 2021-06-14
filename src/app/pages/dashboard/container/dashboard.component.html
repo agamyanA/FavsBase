@@ -23,7 +23,7 @@
 
     <section class="dashboard__bottom">
         <tui-loader [showLoader]='!isLoaded' size='l'>
-            <app-board class="dashboard__board">
+            <board class="dashboard__board">
             <div *ngFor='let folder of folders | async | filter: (searchText | async)'>
                     <folder
                         [folder]=folder
@@ -39,7 +39,7 @@
                         (remove)='remove()'>
                     </bookmark>
                 </div>
-            </app-board>
+            </board>
         </tui-loader>
             
         <button

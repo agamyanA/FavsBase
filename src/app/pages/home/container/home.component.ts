@@ -1,6 +1,8 @@
-import { ChangeDetectionStrategy, Component, OnDestroy } from '@angular/core';
+import { ChangeDetectionStrategy, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { BehaviorSubject, Subject } from 'rxjs';
+import { takeUntil } from 'rxjs/operators';
 import { AuthValidationService } from 'src/app/services/auth-validation.service';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -10,20 +12,18 @@ import { AuthService } from 'src/app/services/auth.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class HomeComponent implements OnDestroy {
+export class HomeComponent implements OnInit, OnDestroy {
   
   constructor(
     private fb: FormBuilder,
     private validation: AuthValidationService,
-    private auth: AuthService
+    private auth: AuthService,
+    private router: Router
   ) {}
 
   private notifier: Subject<any> = new Subject<any>()
-
   private emailPattern: RegExp = /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/
-  
   readonly validationErrorMessages: object = this.validation.vem
-
   readonly authError: BehaviorSubject<boolean> = this.auth.authError
 
   authForm: FormGroup = this.fb.group({
@@ -45,6 +45,18 @@ export class HomeComponent implements OnDestroy {
 
   get pw(): string {
     return this.authForm.value.pw
+  }
+
+  ngOnInit() {
+    const user = this.auth.currentUser.pipe(
+          takeUntil(this.notifier)
+        )
+
+    user.subscribe(user => {
+      if (user) {
+        this.router.navigate(['dashboard'])
+      }
+    })
   }
 
   authHandler(isSignedUp: boolean) {

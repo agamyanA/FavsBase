@@ -1,6 +1,10 @@
-.form-container {
+.container {
     text-align: center;
     padding: 0 1.5rem;
+}
+
+.form-container {
+    margin: 2rem 0;
     
     &__email {
         width: 100%;
@@ -8,37 +12,47 @@
 
     &__pw {
         width: 100%;
-        padding-top: 2rem;
-    }
-
-    &__text {
-        font-size: clamp(0.7rem, 0.8vw, 1.5rem)
+        margin-top: 2rem;
     }
     
     button {
         margin-top: 2rem;
     }
-
-    a {
-        cursor: pointer;
-        text-decoration: underline;
-        color: hsl(227, 59%, 57%);
-    }
 }
 
-.text-mod {
+a {
+    cursor: pointer;
+    text-decoration: underline;
+    color: hsl(227, 59%, 57%);
+}
+
+.text-outside {
     display: block;
-    padding: 2rem 0;
+    font-size: clamp(0.7rem, 0.8vw, 1.5rem)
+}
+
+.mb {
+    margin-bottom: 2rem;
 }
 
 .mt {
-    margin-top: 1rem;
+    margin-top: 2rem;
 }
 
-.pointer {
+.back-button {
     cursor: pointer;
+    border-radius: 7px;
+    width: fit-content;
+    padding: 0.5rem;
+    margin: auto;
+    transition: all 300ms ease-in-out;
+    
+    &:hover {
+        background-color: hsla(0, 0%, 71%, 0.21);
+    }
 }
 
-.center {
-    text-align: center;
+.notification {
+    margin-top: 1rem;
+    animation: tuiReveal var(--tui-duration);
 }

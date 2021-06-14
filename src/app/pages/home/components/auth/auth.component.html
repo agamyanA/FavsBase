@@ -1,18 +1,18 @@
-<section class="center">
+<section class="container">
 
-    <tui-svg
-        *ngIf='!isSignedUp'
-        class="pointer"
-        src='tuiIconArrowLeftLarge'
-        (click)='changeToSingUp()'>
-    </tui-svg>
+    <div 
+        *ngIf='!isSignedUp' 
+        (click)='changeToSingUp()'
+        class="back-button">
+        <tui-svg src='tuiIconArrowLeftLarge'></tui-svg>
+    </div>
+
+    <span class="text-outside mt">Welcome to FavsBase! <br> Simple way to organize your favourite websites</span>
 
     <form 
-            [formGroup]='authForm'
-            (ngSubmit)='onSubmit()'
-            class="form-container">
-
-        <span class="form-container__text text-mod">Welcome to FavsBase! <br> Simple way to categorize favourite links</span>
+        [formGroup]='authForm'
+        (ngSubmit)='onSubmit()'
+        class="form-container">
 
         <tui-input
             formControlName='email'
@@ -43,19 +43,18 @@
             type="submit"
             [disabled]='!authForm.valid'>
             Sign up
-        </button>
-
-        <span 
-            *ngIf='isSignedUp'
-            class="form-container__text text-mod">
-            First time here? <a (click)="changeToSingUp()">Sign up</a> or use <a (click)="onDemo()">Demo mode</a>
-        </span>
-
+        </button>        
     </form>
+
+    <span 
+        *ngIf='isSignedUp'
+        class="text-outside mb">
+        First time here? <a (click)="changeToSingUp()">Sign up</a> or use <a (click)="onDemo()">Demo mode</a>
+    </span>
 
     <tui-notification 
         *ngIf='authError | async'
-        class="form-container__text mt center"
+        class="notification"
         [status]="$any('error')">
         {{ notificationText }}
     </tui-notification>

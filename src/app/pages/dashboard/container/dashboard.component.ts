@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'app-dashboard',
+  selector: 'dashboard',
   templateUrl: 'dashboard.component.html', 
   styleUrls: ['dashboard.component.scss']
 })
@@ -73,6 +73,6 @@ export class DashboardComponent implements OnInit {
 
   signOut() {
     this.auth.signOut()
-    this.router.navigate(['home'])
+    this.router.navigate([''])
   }
 }
