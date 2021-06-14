@@ -11,7 +11,7 @@ export class BookmarkComponent {
 
   @Output() remove: EventEmitter<any> = new EventEmitter()
   @Output() edit: EventEmitter<any> = new EventEmitter()
-  @Input() card!: Bookmark
+  @Input() bookmark!: Bookmark
 
   menuToggle: boolean = false
   menuOpen: boolean = false
@@ -26,11 +26,11 @@ export class BookmarkComponent {
     this.menuOpen =! this.menuOpen
   }
 
-  editCard() {
+  editBookmark() {
     this.edit.emit()
   }
 
-  removeCard() {
+  removeBookmark() {
     this.remove.emit()
   }
 }

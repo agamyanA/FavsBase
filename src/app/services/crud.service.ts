@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
-import { Observable } from 'rxjs';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Bookmark } from '../models/bookmark.model';
 import { Folder } from '../models/folder.model';
+import { AuthService } from './auth.service';
 
 @Injectable({
   providedIn: 'root'
@@ -10,25 +11,43 @@ import { Folder } from '../models/folder.model';
 
 export class CrudService {
 
-  constructor(private db: AngularFirestore) {}
+  constructor(private db: AngularFirestore, private auth: AuthService) {}
 
-  addBookmark(uid: string, bookmark: Bookmark, parentName: string) {        
-    this.db.collection('users').doc(uid).collection(parentName).add({...bookmark, type: 'bookmark'})
+  currentFolder: BehaviorSubject<string> = new BehaviorSubject<string>('main')
+
+  private get UserData(): AngularFirestoreDocument {
+    return this.db.collection('users').doc(this.auth.userID.getValue())
   }
 
-  addFolder(uid: string, folder: Folder, parentName: string) {
-    this.db.collection('users').doc(uid).collection(parentName).add({...folder, type: 'folder'})
-    this.db.collection('users').doc(uid).collection(folder.name).add({})
+  addBookmark(details: string[]) {
+    const [title, url] = details
+
+    this.UserData.collection(this.currentFolder.getValue()).add({
+      title: title,
+      url: url,
+      type: 'bookmark'
+    })
   }
 
-  getBookmarks(uid: string, folder: Folder): Observable<Bookmark[]> {
-    return this.db.collection('users').doc(uid).collection(folder.name, ref => {
+  addFolder(details: string[]) {
+    const [name] = details
+
+    this.UserData.collection(this.currentFolder.getValue()).add({
+      name: name,
+      type: 'folder'
+    })
+
+    this.UserData.collection(name).add({})
+  }
+
+  getBookmarks(): Observable<Bookmark[]> {
+    return this.UserData.collection(this.currentFolder.getValue(), ref => {
       return ref.where('type', '==', 'bookmark')
     }).valueChanges() as Observable<Bookmark[]>
   }
 
-  getFolders(uid: string, folder: Folder): Observable<Folder[]> {
-    return this.db.collection('users').doc(uid).collection(folder.name, ref => {
+  getFolders(): Observable<Folder[]> {
+    return this.UserData.collection(this.currentFolder.getValue(), ref => {
       return ref.where('type', '==', 'folder')
     }).valueChanges() as Observable<Folder[]>
   }

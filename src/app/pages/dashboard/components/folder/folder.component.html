@@ -1,10 +1,11 @@
 <tui-island
     class="card"
     (mouseenter)='showMenuToggle()'
-    (mouseleave)='showMenuToggle()'>
+    (mouseleave)='showMenuToggle()'
+    (click)='openFolder()'>
     <span
         class="card__title">
-        {{ card.name }}
+        {{ folder.name }}
     </span>
     <tui-svg src='tuiIconFolderLarge'></tui-svg>
     <div class="card__toggle-container">
@@ -24,13 +25,13 @@
     (touchmove)='openMenuToggle($event)'>
     <span 
         class="card__dropdown-item"
-        (click)='editCard()'>
+        (click)='editFolder()'>
         Edit
     </span>
     <hr>
     <span 
         class="card__dropdown-item"
-        (click)='removeCard()'>
+        (click)='removeFolder()'>
         Remove
     </span>
 </div>

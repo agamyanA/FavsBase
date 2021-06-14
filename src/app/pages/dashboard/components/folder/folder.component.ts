@@ -11,7 +11,8 @@ export class FolderComponent {
   
   @Output() remove: EventEmitter<any> = new EventEmitter()
   @Output() edit: EventEmitter<any> = new EventEmitter()
-  @Input() card!: Folder
+  @Output() open: EventEmitter<any> = new EventEmitter()
+  @Input() folder!: Folder
 
   menuToggle: boolean = false
   menuOpen: boolean = false
@@ -21,15 +22,19 @@ export class FolderComponent {
   }
 
   openMenuToggle(event: Event) {
-    event.preventDefault()
+    event.stopPropagation()
     this.menuOpen =! this.menuOpen
   }
 
-  editCard() {
+  editFolder() {
     this.edit.emit()
   }
 
-  removeCard() {
+  removeFolder() {
     this.remove.emit()
+  }
+
+  openFolder() {
+    this.open.emit(this.folder.name)
   }
 }

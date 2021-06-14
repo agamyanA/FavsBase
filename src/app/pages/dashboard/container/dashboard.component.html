@@ -1,10 +1,52 @@
-<section class="dashboard">
-    <app-search class="dashboard__search"></app-search>
-    <app-board class="dashboard__board"></app-board>
-    <button
-        tuiIconButton
-        icon='tuiIconPlusLarge'
-        appearance='secondary'
-        (click)='openDialog()'> 
-    </button>
-</section>
+<main class="dashboard">
+    <section class="dashboard__top">
+        <button
+            tuiIconButton
+            icon='tuiIconUndoLarge'
+            appearance='secondary'
+            size='m'
+            (click)='goToMain()'> 
+        </button>
+        <app-search 
+            class="dashboard__top-search"
+            tuiTextfieldSize='m'>
+        </app-search>
+        <button
+            tuiIconButton
+            icon='tuiIconLogoutLarge'
+            appearance='secondary'
+            size='m'
+            (click)='signOut()'> 
+        </button>
+    </section>
+
+    <section class="dashboard__bottom">
+        <tui-loader [showLoader]='!isLoaded' size='l'>
+            <app-board class="dashboard__board">
+                <div *ngFor='let folder of folders | async'>
+                    <folder 
+                        [folder]=folder
+                        (edit)='edit()'
+                        (remove)='remove()'
+                        (open)='openFolder($event)'>
+                    </folder>
+                </div>
+                <div *ngFor='let bookmark of bookmarks | async'>
+                    <bookmark 
+                        [bookmark]=bookmark
+                        (edit)='edit()'
+                        (remove)='remove()'>
+                    </bookmark>
+                </div>
+            </app-board>
+        </tui-loader>
+            
+        <button
+            tuiIconButton
+            icon='tuiIconPlusLarge'
+            appearance='primary'
+            size='m'
+            (click)='openDialog()'> 
+        </button>
+    </section>
+</main>

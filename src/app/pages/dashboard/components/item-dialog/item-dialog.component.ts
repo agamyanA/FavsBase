@@ -2,10 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TuiDialogContext } from '@taiga-ui/core';
 import { POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus';
-import { Bookmark } from 'src/app/models/bookmark.model';
 import { dialogType } from 'src/app/models/dialogType.model';
-import { Folder } from 'src/app/models/folder.model';
-import { AuthService } from 'src/app/services/auth.service';
 import { CrudService } from 'src/app/services/crud.service';
 
 @Component({
@@ -20,7 +17,6 @@ export class ItemDialogComponent implements OnInit {
     @Inject(POLYMORPHEUS_CONTEXT) private readonly context: TuiDialogContext<void, dialogType>,
     private fb: FormBuilder,
     private crud: CrudService,
-    private auth: AuthService
   ) {}
 
   dialogType!: dialogType
@@ -44,38 +40,13 @@ export class ItemDialogComponent implements OnInit {
     }
   }
 
-  createBookmark(...value: string[]): Bookmark {
-    const [title, url] = value
-    
-    return {
-      title: title,
-      url: url
-    }
-  }
-
-  createFolder(...value: string[]): Folder {
-    const [name] = value
-
-    return {
-      name: name
-    }
-  }
-
   addItem() {
     switch (this.dialogType.type) {
       case 'Bookmark':
-        this.crud.addBookmark(
-          this.auth.userID.getValue(),
-          this.createBookmark(...this.formFields.value),
-          'main'
-        )
+        this.crud.addBookmark(this.formFields.value)
         break
       case 'Folder':
-        this.crud.addFolder(
-          this.auth.userID.getValue(),
-          this.createFolder(...this.formFields.value),
-          'main'
-        )
+        this.crud.addFolder(this.formFields.value)
         break
     }
 

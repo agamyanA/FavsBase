@@ -12,7 +12,7 @@ import { ChooseItemDialogComponent } from './components/choose-item-dialog/choos
 import { ItemDialogComponent } from './components/item-dialog/item-dialog.component';
 
 import { TuiAvatarModule, TuiInputModule, TuiIslandModule } from '@taiga-ui/kit';
-import { TuiButtonModule, TuiDialogModule, TuiSvgModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
+import { TuiButtonModule, TuiDialogModule, TuiLoaderModule, TuiSvgModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
 
 @NgModule({
   declarations: [
@@ -34,7 +34,8 @@ import { TuiButtonModule, TuiDialogModule, TuiSvgModule, TuiTextfieldControllerM
     TuiAvatarModule,
     TuiSvgModule,
     TuiDialogModule,
-    TuiTextfieldControllerModule
+    TuiTextfieldControllerModule,
+    TuiLoaderModule
   ]
 })
 export class DashboardModule { }

@@ -1,16 +1,3 @@
 <tui-island class="board">
-    <div *ngFor='let item of folders | async'>
-        <folder 
-            [card]=item
-            (edit)='edit()'
-            (remove)='remove()'>
-        </folder>
-    </div>
-    <div *ngFor='let item of bookmarks | async'>
-        <bookmark 
-            [card]=item
-            (edit)='edit()'
-            (remove)='remove()'>
-        </bookmark>
-    </div>
+    <ng-content></ng-content>
 </tui-island>

@@ -1,5 +1,5 @@
 <a 
-    [href]="'https://' + card.url"
+    [href]="'https://' + bookmark.url"
     id="link">
     <tui-island
         class="card"
@@ -7,13 +7,13 @@
         (mouseleave)='showMenuToggle()'>
         <span
             class="card__title">
-            {{ card.title }}
+            {{ bookmark.title }}
         </span>
         <tui-avatar
             size='s'
-            [text]='card.title'
+            [text]='bookmark.title'
             [rounded]=true
-            [avatarUrl]="avatarUrl + card.url + '/32'">
+            [avatarUrl]="avatarUrl + bookmark.url + '/32'">
         </tui-avatar>
         <div class="card__toggle-container">
             <tui-svg
@@ -33,13 +33,13 @@
     (touchmove)='openMenuToggle($event)'>
     <span 
         class="card__dropdown-item"
-        (click)='editCard()'>
+        (click)='editBookmark()'>
         Edit
     </span>
     <hr>
     <span 
         class="card__dropdown-item"
-        (click)='removeCard()'>
+        (click)='removeBookmark()'>
         Remove
     </span>
 </div>
