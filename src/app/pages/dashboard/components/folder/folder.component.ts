@@ -35,6 +35,6 @@ export class FolderComponent {
   }
 
   openFolder() {
-    this.open.emit(this.folder.name)
+    this.open.emit(this.folder.title)
   }
 }

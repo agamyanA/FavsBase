@@ -9,6 +9,7 @@ import { Folder } from 'src/app/pages/dashboard/models/folder.model';
 import { CrudService } from 'src/app/services/crud.service';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-dashboard',
@@ -28,6 +29,8 @@ export class DashboardComponent implements OnInit {
   bookmarks!: Observable<Bookmark[]>
   folders!: Observable<Folder[]>
   isLoaded: boolean = false
+  search: FormControl = new FormControl()
+  searchText: Observable<any> = this.search.valueChanges
 
   ngOnInit() {
     this.auth.currentUser.pipe(take(1)).subscribe(

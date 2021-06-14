@@ -1,3 +1,3 @@
 export interface Folder {
-    name: string
+    title: string
 }

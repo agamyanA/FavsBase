@@ -10,6 +10,7 @@ import { BookmarkComponent } from './components/bookmark/bookmark.component';
 import { FolderComponent } from './components/folder/folder.component';
 import { ChooseItemDialogComponent } from './components/choose-item-dialog/choose-item-dialog.component';
 import { ItemDialogComponent } from './components/item-dialog/item-dialog.component';
+import { FilterPipe } from './utils/filter.pipe';
 
 import { TuiAvatarModule, TuiInputModule, TuiIslandModule } from '@taiga-ui/kit';
 import { TuiButtonModule, TuiDialogModule, TuiLoaderModule, TuiSvgModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
@@ -22,7 +23,8 @@ import { TuiButtonModule, TuiDialogModule, TuiLoaderModule, TuiSvgModule, TuiTex
     BookmarkComponent,
     ChooseItemDialogComponent,
     ItemDialogComponent,
-    FolderComponent
+    FolderComponent,
+    FilterPipe
   ],
   imports: [
     CommonModule,

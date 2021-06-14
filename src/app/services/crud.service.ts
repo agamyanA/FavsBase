@@ -30,14 +30,14 @@ export class CrudService {
   }
 
   addFolder(details: string[]) {
-    const [name] = details
+    const [title] = details
 
     this.UserData.collection(this.currentFolder.getValue()).add({
-      name: name,
+      title: title,
       type: 'folder'
     })
 
-    this.UserData.collection(name).add({})
+    this.UserData.collection(title).add({})
   }
 
   getBookmarks(): Observable<Bookmark[]> {

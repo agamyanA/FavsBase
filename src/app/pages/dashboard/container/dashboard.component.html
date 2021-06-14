@@ -7,7 +7,8 @@
             size='m'
             (click)='goToMain()'> 
         </button>
-        <app-search 
+        <app-search
+            [search]='search' 
             class="dashboard__top-search"
             tuiTextfieldSize='m'>
         </app-search>
@@ -23,15 +24,15 @@
     <section class="dashboard__bottom">
         <tui-loader [showLoader]='!isLoaded' size='l'>
             <app-board class="dashboard__board">
-                <div *ngFor='let folder of folders | async'>
-                    <folder 
+            <div *ngFor='let folder of folders | async | filter: (searchText | async)'>
+                    <folder
                         [folder]=folder
                         (edit)='edit()'
                         (remove)='remove()'
                         (open)='openFolder($event)'>
                     </folder>
                 </div>
-                <div *ngFor='let bookmark of bookmarks | async'>
+                <div *ngFor='let bookmark of bookmarks | async | filter: (searchText | async)'>
                     <bookmark 
                         [bookmark]=bookmark
                         (edit)='edit()'
