@@ -28,6 +28,7 @@ export class DashboardComponent implements OnInit {
 
   bookmarks!: Observable<Bookmark[]>
   folders!: Observable<Folder[]>
+  totalItems!: Observable<any[]>
   isLoaded: boolean = false
   search: FormControl = new FormControl()
   searchText: Observable<any> = this.search.valueChanges
@@ -38,6 +39,7 @@ export class DashboardComponent implements OnInit {
         this.auth.userID.next(user?.uid)
         this.bookmarks = this.crud.getBookmarks()
         this.folders = this.crud.getFolders()
+        this.totalItems = this.crud.totalItems
         this.isLoaded = true
       }
     )
@@ -55,6 +57,7 @@ export class DashboardComponent implements OnInit {
     this.crud.currentFolder.next(folderName)
     this.bookmarks = this.crud.getBookmarks()
     this.folders = this.crud.getFolders()
+    this.totalItems = this.crud.totalItems
   }
 
   edit() {}
@@ -65,6 +68,7 @@ export class DashboardComponent implements OnInit {
     this.crud.currentFolder.next('main')
     this.bookmarks = this.crud.getBookmarks()
     this.folders = this.crud.getFolders()
+    this.totalItems = this.crud.totalItems
   }
 
   signOut() {

@@ -43,6 +43,7 @@
         </tui-loader>
             
         <button
+            [disabled]='totalItems | async | isLimitReached: 19'
             tuiIconButton
             icon='tuiIconPlusLarge'
             appearance='primary'

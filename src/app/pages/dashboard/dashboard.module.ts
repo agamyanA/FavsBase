@@ -10,7 +10,9 @@ import { BookmarkComponent } from './components/bookmark/bookmark.component';
 import { FolderComponent } from './components/folder/folder.component';
 import { ChooseItemDialogComponent } from './components/choose-item-dialog/choose-item-dialog.component';
 import { ItemDialogComponent } from './components/item-dialog/item-dialog.component';
+
 import { FilterPipe } from './utils/filter.pipe';
+import { IsLimitReachedPipe } from './utils/is-limit-reached.pipe';
 
 import { TuiAvatarModule, TuiInputModule, TuiIslandModule } from '@taiga-ui/kit';
 import { TuiButtonModule, TuiDialogModule, TuiLoaderModule, TuiSvgModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
@@ -24,7 +26,8 @@ import { TuiButtonModule, TuiDialogModule, TuiLoaderModule, TuiSvgModule, TuiTex
     ChooseItemDialogComponent,
     ItemDialogComponent,
     FolderComponent,
-    FilterPipe
+    FilterPipe,
+    IsLimitReachedPipe
   ],
   imports: [
     CommonModule,

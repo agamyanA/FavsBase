@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
+import { withLatestFrom } from 'rxjs/operators';
 import { Bookmark } from '../pages/dashboard/models/bookmark.model';
 import { Folder } from '../pages/dashboard/models/folder.model';
 import { AuthService } from './auth.service';
@@ -17,6 +18,10 @@ export class CrudService {
 
   private get UserData(): AngularFirestoreDocument {
     return this.db.collection('users').doc(this.auth.userID.getValue())
+  }
+
+  get totalItems(): Observable<any[]> {
+    return this.getBookmarks().pipe(withLatestFrom(this.getFolders()))
   }
 
   addBookmark(details: string[]) {
