@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
 import { BehaviorSubject, Observable } from 'rxjs';
-import { Bookmark } from '../models/bookmark.model';
-import { Folder } from '../models/folder.model';
+import { Bookmark } from '../pages/dashboard/models/bookmark.model';
+import { Folder } from '../pages/dashboard/models/folder.model';
 import { AuthService } from './auth.service';
 
 @Injectable({

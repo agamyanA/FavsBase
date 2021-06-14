@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Bookmark } from 'src/app/models/bookmark.model';
+import { Bookmark } from 'src/app/pages/dashboard/models/bookmark.model';
 
 @Component({
   selector: 'bookmark',

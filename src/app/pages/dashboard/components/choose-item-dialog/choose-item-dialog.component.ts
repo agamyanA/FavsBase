@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { TuiDialogContext, TuiDialogService } from '@taiga-ui/core';
 import { PolymorpheusComponent, POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus';
-import { dialogType } from 'src/app/models/dialogType.model';
+import { dialogType } from 'src/app/pages/dashboard/models/dialogType.model';
 import { ItemDialogComponent } from '../item-dialog/item-dialog.component';
 
 @Component({

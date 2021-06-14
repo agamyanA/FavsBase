@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { Folder } from 'src/app/models/folder.model';
+import { Folder } from 'src/app/pages/dashboard/models/folder.model';
 
 @Component({
   selector: 'folder',

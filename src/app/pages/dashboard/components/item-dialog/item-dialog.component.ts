@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TuiDialogContext } from '@taiga-ui/core';
 import { POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus';
-import { dialogType } from 'src/app/models/dialogType.model';
+import { dialogType } from 'src/app/pages/dashboard/models/dialogType.model';
 import { CrudService } from 'src/app/services/crud.service';
 
 @Component({
