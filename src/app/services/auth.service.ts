@@ -15,6 +15,7 @@ export class AuthService {
   currentUser: Observable<any> = this.auth.user
   userID: BehaviorSubject<any> = new BehaviorSubject<any>('')
   authError: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
+  showSignInLoader: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
 
   signUp(email: string, pw: string): Observable<any> {
     return from(this.auth.createUserWithEmailAndPassword(email, pw))
@@ -42,9 +43,14 @@ export class AuthService {
     method.subscribe(
       () => {
         this.authError.next(false)
+        this.showSignInLoader.next(false)
         this.router.navigate(['dashboard'])
+
       },
-      () => this.authError.next(true)
+      () => {
+        this.authError.next(true)
+        this.showSignInLoader.next(false)
+      }
     )
   }
 }

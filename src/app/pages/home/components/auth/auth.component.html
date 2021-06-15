@@ -30,20 +30,13 @@
         <tui-error *ngIf='pwErrors.required' [error]="validationErrorMessages.pw.required"></tui-error>
         <tui-error *ngIf='pwErrors.length' [error]="validationErrorMessages.pw.length"></tui-error>
 
-        <button 
-            *ngIf='isSignedUp'
+        <button
             tuiButton
             type="submit"
+            [showLoader]='showSignInLoader | async'
             [disabled]='!authForm.valid'>
-            Sign in
+            {{ text.buttonText }}
         </button>
-        <button 
-            *ngIf='!isSignedUp'
-            tuiButton
-            type="submit"
-            [disabled]='!authForm.valid'>
-            Sign up
-        </button>        
     </form>
 
     <span 
@@ -56,7 +49,7 @@
         *ngIf='authError | async'
         class="notification"
         [status]="$any('error')">
-        {{ notificationText }}
+        {{ text.notificationText }}
     </tui-notification>
 
 </section>

@@ -24,7 +24,8 @@ export class HomeComponent implements OnInit, OnDestroy {
   private notifier: Subject<any> = new Subject<any>()
   private emailPattern: RegExp = /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/
   readonly validationErrorMessages: object = this.validation.vem
-  readonly authError: BehaviorSubject<boolean> = this.auth.authError
+  authError: BehaviorSubject<boolean> = this.auth.authError
+  showSignInLoader: BehaviorSubject<boolean> = this.auth.showSignInLoader
 
   authForm: FormGroup = this.fb.group({
     email: [null, [Validators.required, Validators.pattern(this.emailPattern)]],
@@ -60,8 +61,9 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   authHandler(isSignedUp: boolean) {
+    this.auth.showSignInLoader.next(true)
     if (isSignedUp) {
-      this.auth.handler(this.auth.signIn(this.email, this.pw), this.notifier)                                  
+      this.auth.handler(this.auth.signIn(this.email, this.pw), this.notifier)
     } else {
       this.auth.handler(this.auth.signUp(this.email, this.pw), this.notifier)      
     }

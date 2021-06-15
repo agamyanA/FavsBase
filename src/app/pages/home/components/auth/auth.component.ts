@@ -18,11 +18,11 @@ export class AuthComponent {
   @Input() emailErrors: any
   @Input() pwErrors: any
   @Input() authError!: BehaviorSubject<boolean>
+  @Input() showSignInLoader!: BehaviorSubject<any>
 
   isSignedUp: boolean = true
 
   changeToSingUp() {
-    
     this.isSignedUp = !this.isSignedUp
     this.authError.next(false)
   }
@@ -35,9 +35,16 @@ export class AuthComponent {
     this.demo.emit()
   }
 
-  get notificationText(): string {
-    return this.isSignedUp ? 
-            'Looks like your email or password is incorrect...' :
-            'User with this email already exists'
+  get text() {
+    return this.isSignedUp ?
+          {
+            buttonText: 'Sign in',
+            notificationText: 'Looks like your email or password is incorrect...'
+          } :
+
+          {
+            buttonText: 'Sign up',
+            notificationText: 'User with this email already exists'
+          }
   }
 }
