@@ -1,7 +1,7 @@
 import { Component, Inject } from '@angular/core';
 import { TuiDialogContext, TuiDialogService } from '@taiga-ui/core';
 import { PolymorpheusComponent, POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus';
-import { dialogType } from 'src/app/pages/dashboard/models/dialogType.model';
+import { dialogData } from 'src/app/pages/dashboard/models/dialogData.model';
 import { ItemDialogComponent } from '../item-dialog/item-dialog.component';
 
 @Component({
@@ -13,7 +13,7 @@ import { ItemDialogComponent } from '../item-dialog/item-dialog.component';
 export class ChooseItemDialogComponent {
 
   constructor(
-    @Inject(POLYMORPHEUS_CONTEXT) private readonly context: TuiDialogContext<dialogType, void>,
+    @Inject(POLYMORPHEUS_CONTEXT) private readonly context: TuiDialogContext<dialogData, void>,
     private dialogService: TuiDialogService
   ) {}
 
@@ -22,7 +22,10 @@ export class ChooseItemDialogComponent {
       new PolymorpheusComponent(ItemDialogComponent), {
         size: 's',
         data: {
-          type: 'Bookmark',
+          action: 'Add',
+          itemDetails: {
+            type: 'Bookmark'
+          }
         }
       }
     ).subscribe()
@@ -35,7 +38,10 @@ export class ChooseItemDialogComponent {
       new PolymorpheusComponent(ItemDialogComponent), {
         size: 's',
         data: {
-          type: 'Folder',
+          action: 'Add',
+          itemDetails: {
+            type: 'Folder'
+          }
         }
       }
     ).subscribe()

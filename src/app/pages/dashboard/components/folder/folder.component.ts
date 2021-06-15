@@ -27,14 +27,14 @@ export class FolderComponent {
   }
 
   editFolder() {
-    this.edit.emit()
+    this.edit.emit(this.folder)
   }
 
   removeFolder() {
-    this.remove.emit()
+    this.remove.emit(this.folder.id)
   }
 
   openFolder() {
-    this.open.emit(this.folder.title)
+    this.open.emit(this.folder.id)
   }
 }

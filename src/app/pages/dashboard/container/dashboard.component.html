@@ -22,26 +22,23 @@
     </section>
 
     <section class="dashboard__bottom">
-        <tui-loader [showLoader]='!isLoaded' size='l'>
-            <board class="dashboard__board">
+        <board class="dashboard__board">
             <div *ngFor='let folder of folders | async | filter: (searchText | async)'>
-                    <folder
-                        [folder]=folder
-                        (edit)='edit()'
-                        (remove)='remove()'
-                        (open)='openFolder($event)'>
-                    </folder>
-                </div>
-                <div *ngFor='let bookmark of bookmarks | async | filter: (searchText | async)'>
-                    <bookmark 
-                        [bookmark]=bookmark
-                        (edit)='edit()'
-                        (remove)='remove()'>
-                    </bookmark>
-                </div>
-            </board>
-        </tui-loader>
-            
+                <folder
+                    [folder]=folder
+                    (edit)='editFolder($event)'
+                    (remove)='removeItem($event)'
+                    (open)='openFolder($event)'>
+                </folder>
+            </div>
+            <div *ngFor='let bookmark of bookmarks | async | filter: (searchText | async)'>
+                <bookmark 
+                    [bookmark]=bookmark
+                    (edit)='editBookmark($event)'
+                    (remove)='removeItem($event)'>
+                </bookmark>
+            </div>
+        </board>
         <button
             [disabled]='totalItems | async | isLimitReached: 19'
             tuiIconButton

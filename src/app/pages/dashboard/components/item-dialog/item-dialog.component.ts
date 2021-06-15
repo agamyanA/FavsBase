@@ -2,7 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TuiDialogContext } from '@taiga-ui/core';
 import { POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus';
-import { dialogType } from 'src/app/pages/dashboard/models/dialogType.model';
+import { dialogData } from 'src/app/pages/dashboard/models/dialogData.model';
 import { CrudService } from 'src/app/services/crud.service';
 
 @Component({
@@ -14,17 +14,17 @@ import { CrudService } from 'src/app/services/crud.service';
 export class ItemDialogComponent implements OnInit {
 
   constructor(
-    @Inject(POLYMORPHEUS_CONTEXT) private readonly context: TuiDialogContext<void, dialogType>,
+    @Inject(POLYMORPHEUS_CONTEXT) private readonly context: TuiDialogContext<void, dialogData>,
     private fb: FormBuilder,
     private crud: CrudService,
   ) {}
 
-  dialogType!: dialogType
+  dialogData: dialogData = this.context.data
   formFieldLabels: string[] = ['Name', 'URL']
 
   addItemForm: FormGroup = this.fb.group({
     formFields: this.fb.array([
-      this.fb.control('', Validators.required)
+      this.fb.control(this.dialogData.itemDetails.title, Validators.required)
     ])
   })
 
@@ -33,15 +33,26 @@ export class ItemDialogComponent implements OnInit {
   }
  
   ngOnInit() {
-    this.dialogType = this.context.data
-
-    if (this.dialogType.type === 'Bookmark') {
-      this.formFields.push(this.fb.control('', Validators.required))
+    if (this.dialogData.itemDetails.type === 'Bookmark') {
+      this.formFields.push(
+        this.fb.control(this.dialogData.itemDetails.url, Validators.required)
+      )
     }
   }
 
-  addItem() {
-    switch (this.dialogType.type) {
+  editDialogSubmit() {
+    switch (this.dialogData.itemDetails.type) {
+      case 'Bookmark':
+        this.crud.editBookmark(this.dialogData.itemDetails.id, this.formFields.value)
+        break
+      case 'Folder':
+        this.crud.editFolder(this.dialogData.itemDetails.id, this.formFields.value)
+        break
+    }
+  }
+
+  addDialogSubmit() {
+    switch (this.dialogData.itemDetails.type) {
       case 'Bookmark':
         this.crud.addBookmark(this.formFields.value)
         break
@@ -49,7 +60,17 @@ export class ItemDialogComponent implements OnInit {
         this.crud.addFolder(this.formFields.value)
         break
     }
+  }
 
+  submitDialog() {
+    switch (this.dialogData.action) {
+      case 'add':
+        this.addDialogSubmit()
+        break
+      case 'edit':
+        this.editDialogSubmit()
+        break
+    }
     this.context.$implicit.complete()
   }
 }

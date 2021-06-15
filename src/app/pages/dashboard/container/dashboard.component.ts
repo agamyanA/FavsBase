@@ -10,6 +10,7 @@ import { CrudService } from 'src/app/services/crud.service';
 import { take } from 'rxjs/operators';
 import { Router } from '@angular/router';
 import { FormControl } from '@angular/forms';
+import { ItemDialogComponent } from '../components/item-dialog/item-dialog.component';
 
 @Component({
   selector: 'dashboard',
@@ -29,7 +30,6 @@ export class DashboardComponent implements OnInit {
   bookmarks!: Observable<Bookmark[]>
   folders!: Observable<Folder[]>
   totalItems!: Observable<any[]>
-  isLoaded: boolean = false
   search: FormControl = new FormControl()
   searchText: Observable<any> = this.search.valueChanges
 
@@ -37,12 +37,13 @@ export class DashboardComponent implements OnInit {
     this.auth.currentUser.pipe(take(1)).subscribe(
       user => {
         this.auth.userID.next(user?.uid)
-        this.bookmarks = this.crud.getBookmarks()
-        this.folders = this.crud.getFolders()
-        this.totalItems = this.crud.totalItems
-        this.isLoaded = true
+        this.openFolder('main')
       }
     )
+  }
+  
+  goToMain() {
+    this.openFolder('main')
   }
 
   openDialog() {
@@ -53,22 +54,48 @@ export class DashboardComponent implements OnInit {
     ).subscribe()
   }
 
-  openFolder(folderName: string) {
-    this.crud.currentFolder.next(folderName)
+  openFolder(id: string) {
+    this.crud.currentFolder.next(id)
     this.bookmarks = this.crud.getBookmarks()
     this.folders = this.crud.getFolders()
     this.totalItems = this.crud.totalItems
   }
 
-  edit() {}
-  
-  remove() {}
+  editBookmark(bookmark: Bookmark) {
+    this.dialogService.open(
+      new PolymorpheusComponent(ItemDialogComponent), {
+        size: 's',
+        data: {
+          action: 'Edit',
+          itemDetails: {
+            id: bookmark.id,
+            type: bookmark.type,
+            title: bookmark.title,
+            url: bookmark.url
+          }
+        }
+      }
+    ).subscribe()
+  }
 
-  goToMain() {
-    this.crud.currentFolder.next('main')
-    this.bookmarks = this.crud.getBookmarks()
-    this.folders = this.crud.getFolders()
-    this.totalItems = this.crud.totalItems
+  editFolder(folder: Folder) {
+    this.dialogService.open(
+      new PolymorpheusComponent(ItemDialogComponent), {
+        size: 's',
+        data: {
+          action: 'Edit',
+          itemDetails: {
+            id: folder.id,
+            type: folder.type,
+            title: folder.title
+          }
+        }
+      }
+    ).subscribe()
+  }
+  
+  removeItem(id: string) {
+    this.crud.removeItem(id)
   }
 
   signOut() {

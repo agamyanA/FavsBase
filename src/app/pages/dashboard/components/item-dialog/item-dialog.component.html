@@ -1,8 +1,8 @@
 <main class="dialog-content">
-    <span class="dialog-content__header">{{ dialogType.type }}</span>
+    <span class="dialog-content__header">{{ dialogData.itemDetails.type }}</span>
     <form
         [formGroup]='addItemForm'
-        (ngSubmit)='addItem()'
+        (ngSubmit)='submitDialog()'
         class="dialog-content__form">
         <section 
             formArrayName='formFields'
@@ -21,7 +21,7 @@
                 type="submit"
                 size='m'
                 [disabled]='!addItemForm.valid'>
-                Add
+                {{ dialogData.action }}
             </button>
         </section>
     </form>

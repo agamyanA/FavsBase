@@ -27,10 +27,10 @@ export class BookmarkComponent {
   }
 
   editBookmark() {
-    this.edit.emit()
+    this.edit.emit(this.bookmark)
   }
 
   removeBookmark() {
-    this.remove.emit()
+    this.remove.emit(this.bookmark.id)
   }
 }
