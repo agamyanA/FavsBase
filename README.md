@@ -1,6 +1,6 @@
 # FavsBase 
 
-The idea comes from my personal necessities. FavsBase allows you to easily organaize your favorite websites, put them in folders and make searches among them.
+The idea comes from my personal necessities. FavsBase allows you to easily organize your favorite websites, put them in folders and make searches among them.
 
 ## How to use
 
