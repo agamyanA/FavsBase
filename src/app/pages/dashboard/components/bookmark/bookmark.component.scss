@@ -42,8 +42,8 @@
         position: absolute;
         text-align: center;
         margin-top: 0.2rem;
-        background: hsl(0, 0%, 100%);
-        border: solid 1px hsla(0, 0%, 49%, 0.19);;
+        background: var(--tui-base-02);
+        border: solid 1px hsla(0, 0%, 58%, 0.231);
         border-radius: 5px;
         width: clamp(4rem, 11vw, 6.2rem);
         box-shadow: 0px 8px 13px 3px hsla(0, 0%, 25%, 0.252);
