@@ -6,7 +6,7 @@ The idea comes from my personal necessities. FavsBase allows you to easily organ
 
 1. Sign up or use demo mode
 
-![Capture12](https://user-images.githubusercontent.com/71812898/122228722-2d60d080-cec9-11eb-9af6-a061b426d25c.png)
+![Capture12](https://user-images.githubusercontent.com/71812898/122239022-a6fcbc80-ced1-11eb-9d99-8c6fc3d2d5f5.png)
 
 2. Choose what to add
 
