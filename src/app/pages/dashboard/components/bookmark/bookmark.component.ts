@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Bookmark } from 'src/app/pages/dashboard/models/bookmark.model';
 
 @Component({
   selector: 'bookmark',
   templateUrl: 'bookmark.component.html',
-  styleUrls: ['bookmark.component.scss']
+  styleUrls: ['bookmark.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class BookmarkComponent {

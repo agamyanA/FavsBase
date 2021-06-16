@@ -1,11 +1,11 @@
 <tui-theme-night *ngIf='isDark | async'></tui-theme-night>
 
 <tui-root
-        class="container" 
-        [ngClass]="{ 'dark-mode': isDark | async }">
+    class="container" 
+    [ngClass]="{ 'dark-mode': isDark | async }">
 
     <div class="toggle">
-        <tui-toggle [formControl]="toggle"></tui-toggle>
+        <tui-toggle [formControl]="toggleCtrl" (click)='changeTheme()'></tui-toggle>
         <span class="toggle__text">Dark Mode</span>
     </div>
 

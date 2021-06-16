@@ -102,4 +102,8 @@ export class DashboardComponent implements OnInit {
     this.auth.signOut()
     this.router.navigate([''])
   }
+
+  trackBy(index: number, item: any) {
+    return item.id
+  }
 }

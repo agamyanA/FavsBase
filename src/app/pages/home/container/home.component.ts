@@ -21,9 +21,9 @@ export class HomeComponent implements OnInit, OnDestroy {
     private router: Router
   ) {}
 
-  private notifier: Subject<any> = new Subject<any>()
-  private emailPattern: RegExp = /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/
-  readonly validationErrorMessages: object = this.validation.vem
+  notifier: Subject<any> = new Subject<any>()
+  emailPattern: RegExp = /\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/
+  validationErrorMessages: object = this.validation.vem
   authError: BehaviorSubject<boolean> = this.auth.authError
   showSignInLoader: BehaviorSubject<boolean> = this.auth.showSignInLoader
 

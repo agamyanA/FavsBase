@@ -1,24 +1,28 @@
-import { AfterContentChecked, ChangeDetectionStrategy, Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-import { Observable } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: ['app.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  styleUrls: ['app.component.scss']
 })
 
-export class AppComponent implements AfterContentChecked {
+export class AppComponent implements OnInit {
 
-  constructor() {
-    this.toggle.valueChanges.subscribe(val => localStorage.setItem('isDark', val))
+  toggle!: boolean
+  toggleCtrl: FormControl = new FormControl()
+  isDark: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
+  
+  ngOnInit() {
+   this.isDark.next(localStorage.getItem('isDark') === 'true')
+   this.toggleCtrl.setValue(localStorage.getItem('isDark') === 'true')
+   this.toggle = localStorage.getItem('isDark') === 'true'
   }
 
-  toggle: FormControl = new FormControl()
-  isDark: Observable<boolean> = this.toggle.valueChanges
-
-  ngAfterContentChecked() {
-    this.toggle.setValue(localStorage.getItem('isDark') === 'true')
+  changeTheme() {
+    this.toggle = !this.toggle
+    localStorage.setItem('isDark', this.toggle.toString())
+    this.isDark.next(this.toggle)
   }
 }

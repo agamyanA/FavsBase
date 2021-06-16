@@ -23,7 +23,7 @@
 
     <section class="dashboard__bottom">
         <board class="dashboard__board">
-            <div *ngFor='let folder of folders | async | filter: (searchText | async)'>
+            <div *ngFor='let folder of folders | async | filter: (searchText | async) trackBy: trackBy'>
                 <folder
                     [folder]=folder
                     (edit)='editFolder($event)'
@@ -31,7 +31,7 @@
                     (open)='openFolder($event)'>
                 </folder>
             </div>
-            <div *ngFor='let bookmark of bookmarks | async | filter: (searchText | async)'>
+            <div *ngFor='let bookmark of bookmarks | async | filter: (searchText | async) trackBy: trackBy'>
                 <bookmark 
                     [bookmark]=bookmark
                     (edit)='editBookmark($event)'

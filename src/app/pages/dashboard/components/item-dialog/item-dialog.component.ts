@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TuiDialogContext } from '@taiga-ui/core';
 import { POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus';
@@ -8,7 +8,8 @@ import { CrudService } from 'src/app/services/crud.service';
 @Component({
   selector: 'item-dialog',
   templateUrl: 'item-dialog.component.html',
-  styleUrls: ['item-dialog.component.scss']
+  styleUrls: ['item-dialog.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class ItemDialogComponent implements OnInit {
@@ -64,10 +65,10 @@ export class ItemDialogComponent implements OnInit {
 
   submitDialog() {
     switch (this.dialogData.action) {
-      case 'add':
+      case 'Add':
         this.addDialogSubmit()
         break
-      case 'edit':
+      case 'Edit':
         this.editDialogSubmit()
         break
     }

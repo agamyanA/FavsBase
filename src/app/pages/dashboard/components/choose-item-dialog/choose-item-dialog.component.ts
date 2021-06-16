@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Inject } from '@angular/core';
 import { TuiDialogContext, TuiDialogService } from '@taiga-ui/core';
 import { PolymorpheusComponent, POLYMORPHEUS_CONTEXT } from '@tinkoff/ng-polymorpheus';
 import { dialogData } from 'src/app/pages/dashboard/models/dialogData.model';
@@ -7,7 +7,8 @@ import { ItemDialogComponent } from '../item-dialog/item-dialog.component';
 @Component({
   selector: 'choose-item-dialog',
   templateUrl: 'choose-item-dialog.component.html',
-  styleUrls: ['choose-item-dialog.component.scss']
+  styleUrls: ['choose-item-dialog.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class ChooseItemDialogComponent {

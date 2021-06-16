@@ -1,10 +1,11 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
 import { Folder } from 'src/app/pages/dashboard/models/folder.model';
 
 @Component({
   selector: 'folder',
   templateUrl: 'folder.component.html',
-  styleUrls: ['folder.component.scss']
+  styleUrls: ['folder.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 
 export class FolderComponent {
