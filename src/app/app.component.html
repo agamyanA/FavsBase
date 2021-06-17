@@ -4,7 +4,7 @@
     class="container" 
     [ngClass]="{ 'dark-mode': isDark | async }">
 
-    <div class="toggle">
+    <div class="toggle" *ngIf='crud.isLoaded | async'>
         <tui-toggle [formControl]="toggleCtrl" (click)='changeTheme()'></tui-toggle>
         <span class="toggle__text">Dark Mode</span>
     </div>

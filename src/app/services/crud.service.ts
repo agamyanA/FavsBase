@@ -15,6 +15,7 @@ export class CrudService {
   constructor(private db: AngularFirestore, private auth: AuthService) {}
 
   currentFolder: BehaviorSubject<string> = new BehaviorSubject<string>('')
+  isLoaded: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false)
 
   private get UserData(): AngularFirestoreDocument {
     return this.db.collection('users').doc(this.auth.userID.getValue())

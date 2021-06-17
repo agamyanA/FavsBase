@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { BehaviorSubject } from 'rxjs';
+import { CrudService } from './services/crud.service';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,8 @@ import { BehaviorSubject } from 'rxjs';
 })
 
 export class AppComponent implements OnInit {
+
+  constructor(readonly crud: CrudService) {}
 
   toggle!: boolean
   toggleCtrl: FormControl = new FormControl()

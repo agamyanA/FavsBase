@@ -38,6 +38,7 @@ export class DashboardComponent implements OnInit {
       user => {
         this.auth.userID.next(user?.uid)
         this.openFolder('main')
+        this.crud.isLoaded.next(true)
       }
     )
   }

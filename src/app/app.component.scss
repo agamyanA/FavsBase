@@ -16,6 +16,7 @@ $bg-ligth: linear-gradient(to bottom, hsl(203, 40%, 44%), hsl(203, 40%, 76%));
 .toggle {
     text-align: center;
     margin-bottom: 3rem;
+    animation: tuiReveal var(--tui-duration);
 
     &__text {
         margin-left: 0.5rem;
