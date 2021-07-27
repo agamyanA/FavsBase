@@ -13,6 +13,7 @@
                 tuiTextfieldSize='m'>
                 {{ formFieldLabels[i] }}
             </tui-input>
+            <tui-error *ngIf="i === 1 && isValidURL" error="URL must contain 'http://' or 'https://'"></tui-error>
         </section>
         <section class="dialog-content__form-button">
             <button

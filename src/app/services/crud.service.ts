@@ -28,10 +28,6 @@ export class CrudService {
   addBookmark(details: string[]) {
     let [title, url] = details
     const id = uuidv4()
-    
-    if (url.includes('https://')) {
-      url = url.slice(8)
-    }
 
     this.UserData.collection(this.currentFolder.getValue()).doc(id).set({
       title: title,

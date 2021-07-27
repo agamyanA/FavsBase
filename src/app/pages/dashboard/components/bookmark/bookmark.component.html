@@ -1,5 +1,6 @@
 <a 
-    [href]="'https://' + bookmark.url"
+    [href]="bookmark.url"
+    target="_blank"
     id="link">
     <tui-island
         class="card"
@@ -13,7 +14,7 @@
             size='s'
             [text]='bookmark.title'
             [rounded]=true
-            [avatarUrl]="avatarUrl + bookmark.url + '/32'">
+            [avatarUrl]="avatarURL">
         </tui-avatar>
         <div class="card__toggle-container">
             <tui-svg

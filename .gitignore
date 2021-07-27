@@ -42,8 +42,10 @@ testem.log
 /typings
 firebase.json
 .firebaserc
+.firebase
 
 # System Files
 .DS_Store
 Thumbs.db
 .browserslistrc
+src/environments

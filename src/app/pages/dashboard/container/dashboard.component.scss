@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     gap: 1.5rem;
-    animation: tuiReveal var(--tui-duration);
+    animation: tuiReveal 200ms;
 
     &__top {
         display: flex;

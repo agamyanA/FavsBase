@@ -22,6 +22,7 @@ export class ItemDialogComponent implements OnInit {
 
   dialogData: dialogData = this.context.data
   formFieldLabels: string[] = ['Name', 'URL']
+  VALID_URL: RegExp = /https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/
 
   addItemForm: FormGroup = this.fb.group({
     formFields: this.fb.array([
@@ -32,11 +33,15 @@ export class ItemDialogComponent implements OnInit {
   get formFields(): FormArray {
     return this.addItemForm.get('formFields') as FormArray
   }
+
+  get isValidURL(): boolean {
+    return this.addItemForm.get('formFields')?.get([1])?.errors?.pattern
+  }
  
   ngOnInit() {
     if (this.dialogData.itemDetails.type === 'Bookmark') {
       this.formFields.push(
-        this.fb.control(this.dialogData.itemDetails.url, Validators.required)
+        this.fb.control(this.dialogData.itemDetails.url, [Validators.required, Validators.pattern(this.VALID_URL)])
       )
     }
   }

@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Bookmark } from 'src/app/pages/dashboard/models/bookmark.model';
 
 @Component({
@@ -8,7 +8,7 @@ import { Bookmark } from 'src/app/pages/dashboard/models/bookmark.model';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 
-export class BookmarkComponent {
+export class BookmarkComponent implements OnInit {
 
   @Output() remove: EventEmitter<any> = new EventEmitter()
   @Output() edit: EventEmitter<any> = new EventEmitter()
@@ -16,7 +16,12 @@ export class BookmarkComponent {
 
   menuToggle: boolean = false
   menuOpen: boolean = false
-  avatarUrl: string = 'https://api.faviconkit.com/'
+  avatarURL: string = ''
+
+  ngOnInit() {
+    const bookmarkURL = new URL(this.bookmark.url)
+    this.avatarURL = `https://api.faviconkit.com/${bookmarkURL.hostname}/32`
+  }
 
   showMenuToggle() {
     this.menuToggle = !this.menuToggle

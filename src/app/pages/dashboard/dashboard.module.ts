@@ -15,7 +15,7 @@ import { FilterPipe } from './utils/filter.pipe';
 import { IsLimitReachedPipe } from './utils/is-limit-reached.pipe';
 
 import { TuiAvatarModule, TuiInputModule, TuiIslandModule } from '@taiga-ui/kit';
-import { TuiButtonModule, TuiDialogModule, TuiSvgModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
+import { TuiButtonModule, TuiDialogModule, TuiErrorModule, TuiSvgModule, TuiTextfieldControllerModule } from '@taiga-ui/core';
 
 @NgModule({
   declarations: [
@@ -40,6 +40,7 @@ import { TuiButtonModule, TuiDialogModule, TuiSvgModule, TuiTextfieldControllerM
     TuiSvgModule,
     TuiDialogModule,
     TuiTextfieldControllerModule,
+    TuiErrorModule
   ]
 })
 export class DashboardModule { }
