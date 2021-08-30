@@ -6,7 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
-import { TuiRootModule, TuiThemeNightModule } from '@taiga-ui/core';
+import { TuiDialogModule, TuiRootModule, TuiThemeNightModule } from '@taiga-ui/core';
 import { TuiToggleModule } from '@taiga-ui/kit';
 
 import { AngularFireModule } from '@angular/fire';
@@ -20,6 +20,7 @@ import { AppComponent } from './app.component';
     AppRoutingModule,
     TuiRootModule,
     TuiThemeNightModule,
+    TuiDialogModule,
     TuiToggleModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig)
